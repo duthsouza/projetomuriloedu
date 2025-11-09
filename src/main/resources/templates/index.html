@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>
-            Pagina Principal
-        </title>
-        <link rel="stylesheet" th:href="@{/css/index.css}">
-        <script th:src="@{/js/index.js}"></script>
-    </head>
-    <body>
-        <h1>
-            EXEMPLO PAGINA!
-        </h1>
-        <button onclick="ola()">Ola</button>
-        <img th:src="@{/img/pikachu.jpg}" alt="Um pikachu">
-        <ul>
-            <li><a th:href="@{/pagina1}">PAGINA 1</a></li>
-            <li><a th:href="@{/pagina2}">PAGINA 2</a></li>
-            <li><a th:href="@{/pagina3}">PAGINA 3</a></li>
-            <li><a th:href="@{/calc}">Calculadora</a></li>
-        </ul>
-    </body>
+<head>
+    <title>Página Principal - Seu IMC Saudável</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{/js/index.js}"></script>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <img th:src="@{/img/pikachu.jpg}" alt="Logo SaúdeIMC" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiMwMDk2NzkiLz48dGV4dCB4PSIxMCIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiPlNBMjwvdGV4dD48L3N2Zz4=';">
+            SaúdeIMC
+        </a>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Início</a></li>
+                <li><a th:href="@{/calc}">Calcule seu IMC</a></li>
+                <li><a th:href="@{/pagina1}">Ranking da Empresa</a></li>
+                <li><a th:href="@{/pagina2}">Meu Progresso</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="text-content">
+            <h1>Seu Corpo, Sua Jornada. Monitore seu IMC com Consciência.</h1>
+            <p>Você sabia que o IMC é mais do que um número? É um indicador poderoso da sua saúde e bem-estar. Com o SaúdeIMC, você não só calcula seu índice — você acompanha sua evolução, celebra conquistas e se motiva com metas reais.</p>
+            <p>Nossa plataforma foi criada para ser seu parceiro de saúde diário. Registre seu peso, veja sua evolução ao longo do tempo, compare-se com colegas (no ranking da empresa!) e receba dicas personalizadas para manter ou alcançar o equilíbrio ideal.</p>
+            <p>Porque cuidar de si mesmo não é luxo — é essencial. E aqui, você faz isso com inteligência, carinho e propósito.</p>
+            
+        </div>
+        <div class="image-content">
+            <img th:src="@{/img/pikachu.jpg}" alt="Ilustração de pessoa saudável com gráficos de progresso" onerror="this.src='https://via.placeholder.com/400x300?text=Sua+Saúde+em+Foco';">
+        </div>
+    </main>
+
+</body>
 </html>

@@ -41,8 +41,12 @@ public class MainController {
                            Model model){
                            
         double res = calc.calcularIMC();
+        String classificacao = calc.getClassificacao();
+
         model.addAttribute("calc", calc);
         model.addAttribute("res", res);
+        model.addAttribute("classificacao", classificacao);
+        
         return "calc";
     }
 
