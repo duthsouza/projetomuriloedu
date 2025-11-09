@@ -10,9 +10,9 @@
             CALCULADORA
         </h1>
         <form th:action="@{/calc}" method="post" th:object="${calc}">
-            N1: <input type="number" th:field="*{num1}"><br>
-            N2: <input type="number" th:field="*{num2}"><br>
-            <input type="submit" value="Somar">
+            Peso (Kg): <input type="number" step="0.01" th:field="*{peso}"><br>
+            Altura (m): <input type="number" step="0.01" th:field="*{altura}"><br>
+            <input type="submit" value="Calcular">
         </form>
         <div th:if="${res != null}">
             <h2 th:text="${res}"></h2>

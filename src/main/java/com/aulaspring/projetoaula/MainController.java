@@ -32,15 +32,15 @@ public class MainController {
 
     @GetMapping("/calc")
     public String calc(Model model){
-        model.addAttribute("calc", new Calculadora(0, 0));
+        model.addAttribute("calc", new CalculadoraIMC(0, 0));
         return "calc";
     }
 
     @PostMapping("/calc")
-    public String calcular(@ModelAttribute("calc") Calculadora calc,
+    public String calcular(@ModelAttribute("calc") CalculadoraIMC calc,
                            Model model){
                            
-        double res = calc.getNum1() + calc.getNum2();
+        double res = calc.calcularIMC();
         model.addAttribute("calc", calc);
         model.addAttribute("res", res);
         return "calc";
