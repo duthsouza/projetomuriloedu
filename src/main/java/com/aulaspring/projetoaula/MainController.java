@@ -1,5 +1,8 @@
 package com.aulaspring.projetoaula;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +23,35 @@ public class MainController {
         return "pagina1";
     }
 
+private List<Registro> listaRegistros = new ArrayList<>();
+
     @GetMapping("/pagina2")
-    public String pagina2(){
+    public String pagina2(Model model){
+        model.addAttribute("registro", new Registro());
+        model.addAttribute("lista", listaRegistros);
         return "pagina2";
     }
+
+    @PostMapping("/pagina2")
+    public String registrar(@ModelAttribute("registro") Registro registro,
+                            Model model){
+
+        listaRegistros.add(registro);
+
+        model.addAttribute("registro", new Registro());
+        model.addAttribute("lista", listaRegistros);
+
+        return "pagina2";
+    }
+
+    @GetMapping("/pagina2/delete")
+    public String removerRegistro(@RequestParam("index") int index) {
+        if (index >= 0 && index < listaRegistros.size()) {
+            listaRegistros.remove(index);
+        }
+        return "redirect:/pagina2";
+    }
+
 
     @GetMapping("/pagina3")
     public String pagina3(){

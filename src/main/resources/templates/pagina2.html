@@ -1,14 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>
-            Sua Evolução
-        </title>
-    </head>
-    <body>
-        <h1>
-            Seus registros:
-        </h1>
-        <a th:href="@{/}">Início</a>
-    </body>
+<head>
+    <title>Meu Progresso - SaúdeIMC</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">
+        SaúdeIMC
+    </a>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Início</a></li>
+            <li><a th:href="@{/calc}">Calcular IMC</a></li>
+            <li><a th:href="@{/pagina1}">Ranking da Empresa</a></li>
+            <li><a th:href="@{/pagina2}">Meu Progresso</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="text-content">
+        <h1>Seu Progresso ao Longo do Tempo</h1>
+        <p>Acompanhe sua evolução registrando seu peso e altura sempre que desejar.</p>
+
+        <form th:action="@{/pagina2}" method="post" th:object="${registro}" class="progress-form">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required>
+
+    <label>CPF:</label>
+    <input type="text" th:field="*{cpf}" required>
+
+    <label>Peso Atual (kg):</label>
+    <input type="number" step="0.01" th:field="*{peso}" required>
+
+    <label>Altura (m):</label>
+    <input type="number" step="0.01" th:field="*{altura}" required>
+
+    <button type="submit">Registrar</button>
+</form>
+
+
+        <div th:if="${lista != null and #lists.size(lista) > 0}" class="table-container">
+            <h2>Histórico de Registros</h2>
+
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>CPF</th>
+                    <th>Peso (kg)</th>
+                    <th>Altura (m)</th>
+                    <th>IMC</th>
+                    <th>Classificação</th>
+                </tr>
+
+                <tr th:each="item, iter : ${lista}">
+                    <td th:text="${item.nome}"></td>
+                    <td th:text="${item.dataRegistro}"></td>
+                    <td th:text="${item.cpf}"></td>
+                    <td th:text="${item.peso}"></td>
+                    <td th:text="${item.altura}"></td>
+                    <td th:text="${item.IMC}"></td>
+                    <td th:text="${item.classificacao}"></td>
+                    
+                    <td>
+                        <a th:href="@{/pagina2/delete(index=${iter.index})}" 
+                        style="color: red; font-weight: bold;">
+                        Remover
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</main>
+
+</body>
 </html>

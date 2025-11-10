@@ -7,14 +7,13 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8faf7; /* Fundo claro, suave */
+    background-color: #f8faf7;
     color: #333;
     line-height: 1.6;
 }
 
-/* Header / Barra de Navegação */
 header {
-    background-color: #4CAF50; /* Verde saudável, vibrante mas moderno */
+    background-color: #4CAF50;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -58,7 +57,6 @@ nav a:focus {
     text-decoration: underline;
 }
 
-/* Conteúdo principal */
 main {
     padding: 40px 20px;
     max-width: 1200px;
@@ -77,7 +75,7 @@ main {
 .text-content h1 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: #2e7d32; /* Verde escuro para contraste */
+    color: #2e7d32;
 }
 
 .text-content p {
@@ -99,7 +97,7 @@ main {
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Botão */
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -118,10 +116,65 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Responsivo */
+
 @media (max-width: 768px) {
     main {
         flex-direction: column;
         gap: 30px;
     }
+}
+
+.button-back {
+    display: inline-block;
+    background-color: #4CAF50;
+    padding: 10px 18px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.button-back:hover {
+    background-color: #388E3C;
+}
+
+.progress-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 350px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+.progress-form input {
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:hover {
+    background-color: #f3fff3;
 }
