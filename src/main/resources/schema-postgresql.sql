@@ -1,0 +1,8 @@
+CREATE TABLE registros (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    peso NUMERIC(10,2) NOT NULL,
+    altura NUMERIC(10,2) NOT NULL,
+    data_registro DATE NOT NULL DEFAULT CURRENT_DATE
+);
