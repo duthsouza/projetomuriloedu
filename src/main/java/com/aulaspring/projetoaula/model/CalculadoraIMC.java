@@ -1,4 +1,4 @@
-package com.aulaspring.projetoaula;
+package com.aulaspring.projetoaula.model;
 
 public class CalculadoraIMC {
 

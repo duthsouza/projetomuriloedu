@@ -1,4 +1,4 @@
-package com.aulaspring.projetoaula;
+package com.aulaspring.projetoaula.model;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ import jakarta.annotation.PostConstruct;
 public class RegistroDAO {
 
     @Autowired
-    private DataSource dataSource;
+    DataSource dataSource;
 
-    private JdbcTemplate jdbc;
+    JdbcTemplate jdbc;
 
     @PostConstruct
     private void initialize(){

@@ -1,4 +1,4 @@
-package com.aulaspring.projetoaula;
+package com.aulaspring.projetoaula.model;
 
 import java.time.LocalDate;
 
@@ -10,10 +10,6 @@ public class Registro {
     private double peso;
     private double altura;
     private LocalDate dataRegistro;
-
-    public Registro(){
-        
-    }
 
     public Registro() {
         this.dataRegistro = LocalDate.now();

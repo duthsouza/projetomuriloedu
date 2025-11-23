@@ -1,4 +1,4 @@
-CREATE TABLE registros (
+CREATE TABLE IF NOT EXISTS registros (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     cpf VARCHAR(14) NOT NULL,

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.aulaspring.projetoaula.model.CalculadoraIMC;
+import com.aulaspring.projetoaula.model.Registro;
+
 @Controller
 public class MainController {
 
