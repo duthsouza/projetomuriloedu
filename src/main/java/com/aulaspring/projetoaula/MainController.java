@@ -1,8 +1,6 @@
 package com.aulaspring.projetoaula;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aulaspring.projetoaula.model.CalculadoraIMC;
 import com.aulaspring.projetoaula.model.Registro;
+import com.aulaspring.projetoaula.model.RegistroService;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    private RegistroService registroService;
 
     @GetMapping("/")
     public String index(){
@@ -26,35 +28,28 @@ public class MainController {
         return "pagina1";
     }
 
-private List<Registro> listaRegistros = new ArrayList<>();
-
     @GetMapping("/pagina2")
     public String pagina2(Model model){
         model.addAttribute("registro", new Registro());
-        model.addAttribute("lista", listaRegistros);
+        model.addAttribute("lista", registroService.listarRegistros());
         return "pagina2";
     }
 
     @PostMapping("/pagina2")
-    public String registrar(@ModelAttribute("registro") Registro registro,
-                            Model model){
+    public String registrar(@ModelAttribute("registro") Registro registro, Model model){
 
-        listaRegistros.add(registro);
+        registroService.inserirRegistro(registro);
 
-        model.addAttribute("registro", new Registro());
-        model.addAttribute("lista", listaRegistros);
-
-        return "pagina2";
-    }
-
-    @GetMapping("/pagina2/delete")
-    public String removerRegistro(@RequestParam("index") int index) {
-        if (index >= 0 && index < listaRegistros.size()) {
-            listaRegistros.remove(index);
-        }
         return "redirect:/pagina2";
     }
 
+    @GetMapping("/pagina2/delete")
+    public String removerRegistro(@RequestParam("id") int id) {
+
+        registroService.deletarRegistro(id);
+
+        return "redirect:/pagina2";
+    }
 
     @GetMapping("/pagina3")
     public String pagina3(){
@@ -68,9 +63,8 @@ private List<Registro> listaRegistros = new ArrayList<>();
     }
 
     @PostMapping("/calc")
-    public String calcular(@ModelAttribute("calc") CalculadoraIMC calc,
-                           Model model){
-                           
+    public String calcular(@ModelAttribute("calc") CalculadoraIMC calc, Model model){
+
         double res = calc.calcularIMC();
         String classificacao = calc.getClassificacao();
 
@@ -80,5 +74,4 @@ private List<Registro> listaRegistros = new ArrayList<>();
         
         return "calc";
     }
-
 }
