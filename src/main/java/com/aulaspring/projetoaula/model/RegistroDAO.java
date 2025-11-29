@@ -38,9 +38,10 @@ public class RegistroDAO {
     }
 
     public ArrayList<Registro> listar(){
-        String sql = "SELECT * FROM registros";
+        String sql = "SELECT * FROM registros ORDER BY id";
         List<Map<String,Object>> mapa = jdbc.queryForList(sql);
         ArrayList<Registro> lista = new ArrayList<>();
+
         for(Map<String,Object> m : mapa){
             int id = (Integer) m.get("id");
             String nome = (String) m.get("nome");
@@ -48,6 +49,7 @@ public class RegistroDAO {
             double peso = ((Number)m.get("peso")).doubleValue();
             double altura = ((Number)m.get("altura")).doubleValue();
             Date dataSql = (Date) m.get("data_registro");
+
             Registro r = new Registro(id, nome, cpf, peso, altura, dataSql.toLocalDate());
             lista.add(r);
         }
@@ -57,11 +59,13 @@ public class RegistroDAO {
     public Registro obterRegistro(int id){
         String sql = "SELECT * FROM registros WHERE id=?";
         Map<String,Object> m = jdbc.queryForMap(sql, id);
+
         String nome = (String) m.get("nome");
         String cpf = (String) m.get("cpf");
         double peso = ((Number)m.get("peso")).doubleValue();
         double altura = ((Number)m.get("altura")).doubleValue();
         Date dataSql = (Date) m.get("data_registro");
+
         return new Registro(id, nome, cpf, peso, altura, dataSql.toLocalDate());
     }
 
