@@ -19,6 +19,14 @@ public class RegistroService {
         return registroDAO.listar();
     }
 
+    public Registro obterRegistro(int id) {
+        return registroDAO.obterRegistro(id);
+    }
+
+    public void atualizarRegistro(int id, Registro registro) {
+        registroDAO.atualizarRegistro(id, registro);
+    }
+
     public void deletarRegistro(int id) {
         registroDAO.deletarRegistro(id);
     }
