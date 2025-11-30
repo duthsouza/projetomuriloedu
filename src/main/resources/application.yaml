@@ -1,19 +1,13 @@
-spring:
-  application:
-    name: projetoaula
-
-  datasource:
-        url: ${DATABASE_URL_RENDER}
-        username: ${DB_USERNAME}
-        password: ${DB_PASSWORD}
-        driver-class-name: org.postgresql.Driver
-        initialize: true
-
-  sql:
-    init:
-      schema-locations: classpath:/schema-postgresql.sql
-      mode: always
-      platform: postgres
-
 server:
   port: 8080
+
+spring:
+  datasource:
+    url: ${DATABASE_URL_RENDER}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-postgresql.sql
